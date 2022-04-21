@@ -1,0 +1,8 @@
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('shows the right welcome message', () => {
+  render(<App />);
+  const messageText = screen.getByText('welcome to my website');
+  expect(messageText).toBeInTheDocument();
+});
