@@ -1,0 +1,54 @@
+#
+# This is the config for deploying the app to the staging envinronment when a PR is merged, using GitHub Actions.
+# It can be used as a template if you are deploying a Single Page Application (SPA) i.e. where you just need to copy the
+# built files over.
+#
+
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch: # This means that we can manually trigger the deployment if we want to
+
+env:
+  # If using as a template, just replace the following with the details of the project.
+  # Secrets are added in the GitHub settings section for the repo e.g. https://github.com/ellipsedata/tvportal/settings/secrets/actions
+  NODE_VERSION: '16.x'
+  SOURCE_DIR: 'build' # The directory from the root that the build files are in
+
+jobs:
+  build-and-deploy:
+    # It's useful to run this on the same OS that the host is using
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          # If no packages have been added or removed, this won't need to do anything, saving time
+          cache: 'npm'
+
+      - name: Install dependencies
+        # This is better than npm install, as if the package.json and package-lock.json don't match, it will error out
+        run: npm ci
+
+      - name: Build
+        run: npm run build --if-present
+
+      # Run all of the unit tests
+      - name: Test
+        run: npm run test --if-present
+
+      - name: Deploy to surge
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: '4baec00d-7407-4813-843f-26d7150c2285.surge.sh'
+          project: '.'
+          login: 'spiderwoman91919@gmail.com'
+          token: '89f24de75779611b6f9807fdd01d51ca'

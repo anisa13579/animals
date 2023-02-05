@@ -3,6 +3,6 @@ import App from './App';
 
 test('shows the right welcome message', () => {
   render(<App />);
-  const messageText = screen.getByText('Hello World!');
+  const messageText = screen.getByText("Anisa's SATS Practise Website");
   expect(messageText).toBeInTheDocument();
 });
