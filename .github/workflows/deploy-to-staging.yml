@@ -49,6 +49,6 @@ jobs:
         uses: dswistowski/surge-sh-action@v1
         with:
           domain: '4baec00d-7407-4813-843f-26d7150c2285.surge.sh'
-          project: '.'
+          project: './build'
           login: 'spiderwoman91919@gmail.com'
           token: '89f24de75779611b6f9807fdd01d51ca'

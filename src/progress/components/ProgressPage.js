@@ -28,7 +28,7 @@ export default function ProgressPage() {
               completionStatus={completionStatusTypes.NEEDS_MORE_PRACTISE}
             />
             <Row
-              label="Item 2"
+              label="Item 3"
               completionStatus={completionStatusTypes.DONT_KNOW}
             />
           </Flex>
@@ -43,11 +43,11 @@ export default function ProgressPage() {
               completionStatus={completionStatusTypes.CONFIDENT}
             />
             <Row
-              label="Item 2"
+              label="Item 3"
               completionStatus={completionStatusTypes.NEEDS_MORE_PRACTISE}
             />
             <Row
-              label="Item 2"
+              label="Item 3"
               completionStatus={completionStatusTypes.DONT_KNOW}
             />
           </Flex>
@@ -66,7 +66,7 @@ export default function ProgressPage() {
               completionStatus={completionStatusTypes.NEEDS_MORE_PRACTISE}
             />
             <Row
-              label="Item 2"
+              label="Item 3"
               completionStatus={completionStatusTypes.DONT_KNOW}
             />
           </Flex>
